@@ -31,25 +31,11 @@
     background: var(--main_color2);
 }
 
-body{
-    margin-top:48px;
-}
-
 @media (max-width: 1023px)
 {
     .warning{
         font-size: 14px;
         line-height: 16px;
-    }
-}
-
-@media (max-width: 480px)
-{
-    body{
-        margin-top:90px;
-    }
-    body.eys{
-        margin-top:48px;
     }
 }
 

@@ -76,10 +76,6 @@
         margin-top: 3px;
     }
 
-    .mob_header .logo img {
-        max-width: 160px;
-    }
-
 
     .mob_header .contacts a + a,
     .mob_header .socials,
