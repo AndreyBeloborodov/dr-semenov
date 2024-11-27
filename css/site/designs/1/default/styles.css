@@ -1211,10 +1211,16 @@ header .menu .flexMenu-popup .item>a.touch_link+.sub_menu.show {
     right: 100%;
 }
 
+button {
+    outline-color: #0F0F0F;
+}
+
 .mob_header {
     display: none;
     margin-bottom: 20px;
     padding: 35px 0;
+
+
 }
 
 .mob_header .cont {
@@ -1777,7 +1783,7 @@ aside>*:last-child {
     mask: none;
     -webkit-mask-box-image: none;
     box-shadow: none;
-    border-radius: 0;
+    border-radius: 2;
 }
 
 .main_slider {
@@ -7207,3 +7213,13 @@ aside .cats label:after{
     color: black;
     font-size: 1vw;
 }
+
+.centered-div {
+    display: flex;
+    justify-content: center; /* Центрирование по горизонтали */
+    align-items: center;    /* Центрирование по вертикали */
+    height: 100%;           /* Обязательно задайте высоту родителя */
+    text-align: center;     /* Если нужно выровнять текст */
+    margin-bottom: 23px;
+}
+

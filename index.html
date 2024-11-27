@@ -10,7 +10,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="SKYPE_TOOLBAR" content="SKYPE_TOOLBAR_PARSER_COMPATIBLE">
     <!-- Заголовок страницы -->
-    <title>Главная, Стоматологическая клиника доктора Семёнова</title>
+    <title>Главная, Стоматологическая клиника доктора Семенова</title>
     <!-- Данное значение часто используют(использовали) поисковые системы -->
     <meta name="description" content="Стоматология, Ульяновская обл, г. Ульяновск, ул.Варейкиса 52">
     <meta name="keywords" content="Стоматология, Главная">
@@ -44,7 +44,170 @@
             --box-shadow-color: rgba(35, 202, 146, 0.54);
             --main_color_opacity: rgba(11, 165, 176, 0.1);
         }
-    </style>
+
+
+        .image-slider {
+            display: flex;
+            flex-flow: column;
+            width: 100%;
+            /* max-width: 1134px; */
+            height: 36vw;
+            aspect-ratio: 16 / 9;
+            min-height: 300px;
+            overflow: hidden;
+            /* border-radius: 8px; */
+            container-type: inline-size;
+            contain: content;
+            background-color: #0006;
+            box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 2px, rgba(0, 0, 0, 0.3) 0px 2px 4px, rgba(0, 0, 0, 0.25) 0px 4px 8px, rgba(0, 0, 0, 0.2) 0px 8px 16px, rgba(0, 0, 0, 0.15) 0px 16px 32px;
+        }
+
+        .slider__content {
+            flex-grow: 1;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .slider-control--button {
+            border: 0;
+            background: 0;
+            outline: 0;
+            cursor: pointer;
+            place-content: center;
+            padding-inline: 3vw;
+            z-index: 1;
+            display: grid;
+        }
+
+        .slider-control--button:where(:hover) {
+            background-image: linear-gradient(
+                    to var(--position),
+                    #0000 0%,
+                    #0002,
+                    80%,
+                    #0006 100%
+            );
+
+        }
+
+        .slider-control--button:active {
+            outline: 0.2em solid hsl(204 100 53);
+            outline-offset: -0.5em;
+        }
+
+        .prev-button {
+            --position: left;
+        }
+        .next-button {
+            --position: right;
+        }
+
+        .image-display {
+            position: fixed;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #0006;
+        }
+
+        .image-display img {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0;
+            transition: opacity 0.6s ease-in-out;
+            z-index: 1;
+        }
+
+        .image-display img.active {
+            opacity: 1;
+            z-index: 2;
+        }
+
+
+
+        .slider-navigation {
+            z-index: 10;
+            display: grid;
+            grid-auto-flow: column;
+            grid-template-columns: repeat(6, 1fr);
+            grid-auto-columns: 100%;
+            gap: 1.25rem;
+            padding: 1rem;
+            place-content: center;
+            background-color: var(--navigation-color);
+            backdrop-filter: blur(6px);
+        }
+
+        .nav-button {
+            display: grid;
+            width: 100%;
+            height: 100%;
+            border-radius: 0.5em;
+            overflow: hidden;
+            align-items: center;
+            justify-content: center;
+            border: 0;
+            aspect-ratio: 16 / 9;
+            transition: filter 150ms linear, scale 266ms ease;
+        }
+
+        .thumbnail {
+            display: block;
+            max-width: 100%;
+            width: 100%;
+            object-fit: cover;
+            height: 100%;
+        }
+
+        .nav-button[aria-selected="true"] {
+            scale: 1.1;
+        }
+
+        .nav-button[aria-selected="true"],
+        .nav-button:focus-visible {
+            outline: 0.2em solid var(--active-color);
+            outline-offset: 0.2em;
+        }
+
+        .nav-button[aria-selected="false"] {
+            filter: opacity(0.7);
+        }
+
+        .nav-button[aria-selected="false"]:where(:hover, :focus-visible) {
+            filter: opacity(1);
+        }
+
+        @container (max-width: 660px) {
+            .nav-button:not(:has(img)) {
+                background-color: rgb(241, 235, 232);
+            }
+
+            .slider-navigation {
+                display: flex;
+                justify-content: center;
+                padding-block: 1.5em;
+            }
+
+            .nav-button {
+                inline-size: 0.625rem;
+                aspect-ratio: 1;
+                border-radius: 50%;
+            }
+
+            .nav-button[aria-selected="true"] {
+                background-color: black;
+                scale: 1.5;
+            }
+        }
+
+
+        </style>
                     <style>
 :root {
 background-image:url(https://static.tildacdn.com/tild3133-6134-4234-a538-383536353332/hinh-anh-background-.png);
@@ -119,6 +282,17 @@ background-position: center;
             cursor: pointer;
             border-radius: 5px;
         }
+
+        header {
+            margin-bottom: -70px;
+        }
+
+        @media (max-width: 1185px) {
+            header {
+                margin-bottom: -60px;
+            }
+        }
+
     </style>
             <script>console.log('hello from header service 3')</script>
             <script>console.log('hello from header service 4')</script>
@@ -142,7 +316,7 @@ background-position: center;
                             <div class="logo">
                                 <a href="/">
                                     <img src="/images/upload/sites/site_id_8658/logo/{D342F9C1-AA9E-F34B-E6D3-ABECDD181052}.png"
-                                         alt="Стоматологическая клиника доктора Семёнова, Стоматология">
+                                         alt="Стоматологическая клиника доктора Семенова, Стоматология">
                                 </a>
                             </div>
                             <div class="socials">
@@ -218,13 +392,17 @@ background-position: center;
                                 </li>
                                 <li class="item">
                                     <a class=""
-                                       href="/page/portfolio">Портфолио</a>
+                                       href="/page/kontakty">Контакты</a>
                                 </li>
-
 
                                 <li class="item">
                                     <a class=""
-                                       href="/page/kontakty">Контакты</a>
+                                       href="/page/portfolio">Портфолио</a>
+                                </li>
+
+                                <li class="item">
+                                    <a class=""
+                                       href="/page/nashi_sotrudniki">Наши сотрудники</a>
                                 </li>
                             </ul>
                         </div>
@@ -236,7 +414,7 @@ background-position: center;
                     <div class="logo">
                         <a href="/">
                                                             <img src="/images/upload/sites/site_id_8658/logo/{D342F9C1-AA9E-F34B-E6D3-ABECDD181052}.png"
-                                     alt="Стоматологическая клиника доктора Семёнова, Стоматология">
+                                     alt="Стоматологическая клиника доктора Семенова, Стоматология">
                                                     </a>
                     </div>
                     <div class="bg">
@@ -270,6 +448,39 @@ background-position: center;
                     </button>
                 </div>
             </div>
+
+            <div class="centered-div">
+                <div class="image-slider">
+                    <section class="slider__content">
+                        <button type="button" class="slider-control--button prev-button">
+                        </button>
+                        <main class="image-display"></main>
+                        <button type="button" class="slider-control--button next-button">
+                        </button>
+                    </section>
+                    <nav class="slider-navigation">
+                        <button class="nav-button" aria-selected="true">
+                            <img class="thumbnail" src="/images/upload/sites/site_id_8658/images/slayder/img1.jpg" alt="Thumbnail 1" />
+                        </button>
+                        <button class="nav-button" aria-selected="false">
+                            <img class="thumbnail" src="/images/upload/sites/site_id_8658/images/slayder/img2.jpg" alt="Thumbnail 2" />
+                        </button>
+                        <button class="nav-button" aria-selected="false">
+                            <img class="thumbnail" src="/images/upload/sites/site_id_8658/images/slayder/img3.jpg" alt="Thumbnail 3" />
+                        </button>
+                        <button class="nav-button" aria-selected="false">
+                            <img class="thumbnail" src="/images/upload/sites/site_id_8658/images/slayder/img4.jpg" alt="Thumbnail 4" />
+                        </button>
+                        <button class="nav-button" aria-selected="false">
+                            <img class="thumbnail" src="/images/upload/sites/site_id_8658/images/slayder/img5.jpg" alt="Thumbnail 5" />
+                        </button>
+                        <button class="nav-button" aria-selected="false">
+                            <img class="thumbnail" src="/images/upload/sites/site_id_8658/images/slayder/img6.jpg" alt="Thumbnail 6" />
+                        </button>
+                    </nav>
+                </div>
+            </div>
+
             <section id="slide_1_126479" class="first_section block" 
     data-aos= fade-down
     data-aos-offset=&#039;200&#039;
@@ -282,7 +493,7 @@ background-position: center;
     <div class="cont">
         <div class="info">
             <div class="title">Стоматология</div>
-            <div class="desc"><p><strong>"Стоматологическая клиника доктора Семенова" — это современный медицинский кабинет, где вас обслужат специалисты нужного профиля. Специалисты нашей стоматологической клиники не только вернут Вам здоровье, но и сделают Вас красивым и уверенным в себе человеком. Стоматология доктора Семенова ориентирована на восстановление зубов с помощью имплантации. Мы создали специальные условия для проведения амбулаторных стоматологических вмешательств, включая операции по имплантации. Мы заботимся о Вас и помогаем решить Ваши проблемы.<br />
+            <div class="desc"><p><strong>"Стоматологическая клиника доктора Семенова" — это современный медицинский кабинет, где Вас обслужат специалисты нужного профиля. Специалисты нашей стоматологической клиники не только вернут Вам здоровье, но и сделают Вас красивым и уверенным в себе человеком. Стоматология доктора Семенова ориентирована на восстановление зубов с помощью имплантации. Мы создали специальные условия для проведения амбулаторных стоматологических вмешательств, включая операции по имплантации. Мы заботимся о Вас и помогаем решить Ваши проблемы.<br />
 <br /></strong><br />
 <br />
 <h1>График работы:<br />
@@ -308,7 +519,7 @@ background-position: center;
     <div class="cont">
         <div class="block_head">
             <div class="title">Наши услуги</div>
-            <div class="desc"><p><h3>В клинике доктора Семёнова применяются передовые технологии и современные методы лечения, а команда специалистов гарантирует высокий уровень профессионализма!</p></div>
+            <div class="desc"><p><h3>В клинике доктора Семенова применяются передовые технологии и современные методы лечения, а команда специалистов гарантирует высокий уровень профессионализма!</p></div>
         </div>
         <div class="flex">
                             <a href="/page/khirurgiya" class="service">
@@ -389,7 +600,7 @@ background-position: center;
                         <img data-src="/images/upload/sites/site_id_8658/images/{8A51A3D4-15E9-DFBC-B3E7-3D361FF1AFAA}.jpeg" alt="" class="lozad">
                     </div>
                     <div class="name">Индивидуальный подход</div>
-                    <div class="desc">В клинике доктора Семёнова каждому пациенту уделяется столько времени и внимания, сколько требуется для достижения идеального результата лечения.</div>
+                    <div class="desc">В клинике доктора Семенова каждому пациенту уделяется столько времени и внимания, сколько требуется для достижения идеального результата лечения.</div>
                 </div>
                             <div class="item">
                     <div class="icon">
@@ -517,6 +728,105 @@ background-position: center;
 <script>console.log('hello from footed service 3')</script>
 <script>console.log('hello from footed service 4')</script>
 <script>console.log('hello from footed service 5')</script>
+
+<script>
+    class Slider {
+        constructor(slider) {
+            this.slider = slider;
+            this.display = slider.querySelector(".image-display");
+            this.navButtons = Array.from(slider.querySelectorAll(".nav-button"));
+            this.prevButton = slider.querySelector(".prev-button");
+            this.nextButton = slider.querySelector(".next-button");
+            this.currentSlideIndex = 0;
+            this.images = [];
+            this.autoSlideInterval = null; // Таймер для автоматического переключения
+            this.autoSlideDelay = 3000; // Интервал автопереключения (3 секунды)
+
+            this.initialize();
+        }
+
+        initialize() {
+            this.setupImages();
+            this.showSlide(this.currentSlideIndex);
+            this.startAutoSlide();
+            this.eventListeners();
+        }
+
+        setupImages() {
+            this.navButtons.forEach((button) => {
+                const imgSrc = button.querySelector("img").src;
+                const imgElement = document.createElement("img");
+                imgElement.src = imgSrc;
+                this.display.appendChild(imgElement);
+                this.images.push(imgElement);
+            });
+        }
+
+        showSlide(index) {
+            // Скрыть текущее изображение
+            this.images.forEach((img, imgIndex) => {
+                if (imgIndex === index) {
+                    img.classList.add("active");
+                } else {
+                    img.classList.remove("active");
+                }
+            });
+
+            // Обновить навигацию
+            this.updateNavButtons(index);
+            this.currentSlideIndex = index;
+        }
+
+        updateNavButtons(index) {
+            this.navButtons.forEach((button, buttonIndex) => {
+                button.setAttribute("aria-selected", buttonIndex === index);
+            });
+        }
+
+        eventListeners() {
+            this.prevButton.addEventListener("click", () => {
+                const newIndex = (this.currentSlideIndex - 1 + this.images.length) % this.images.length;
+                this.showSlide(newIndex);
+                this.resetAutoSlide(); // Сброс автопереключения при ручном взаимодействии
+            });
+
+            this.nextButton.addEventListener("click", () => {
+                const newIndex = (this.currentSlideIndex + 1) % this.images.length;
+                this.showSlide(newIndex);
+                this.resetAutoSlide(); // Сброс автопереключения при ручном взаимодействии
+            });
+
+            this.navButtons.forEach((button, index) => {
+                button.addEventListener("click", () => {
+                    this.showSlide(index);
+                    this.resetAutoSlide(); // Сброс автопереключения при ручном взаимодействии
+                });
+            });
+        }
+
+        startAutoSlide() {
+            this.autoSlideInterval = setInterval(() => {
+                const newIndex = (this.currentSlideIndex + 1) % this.images.length;
+                this.showSlide(newIndex);
+            }, this.autoSlideDelay);
+        }
+
+        stopAutoSlide() {
+            clearInterval(this.autoSlideInterval);
+            this.autoSlideInterval = null;
+        }
+
+        resetAutoSlide() {
+            this.stopAutoSlide();
+            this.startAutoSlide();
+        }
+    }
+
+    const imageSlider = new Slider(document.querySelector(".image-slider"));
+
+
+</script>
+
 
 </body>
 </html>
